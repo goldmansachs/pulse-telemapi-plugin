@@ -1,0 +1,95 @@
+<query-editor-row query-ctrl="ctrl" class="datasource-query-row" has-text-edit-mode="true">
+  <div class="gf-form-inline">
+    <div class="gf-form">
+      <label class="gf-form-label width-6">Domain</label>
+      <gf-form-dropdown model="ctrl.target.domain"
+                        lookup-text="true"
+                        get-options="ctrl.getDomains($query)"
+                        on-change="ctrl.onChangeInternal()">
+      </gf-form-dropdown>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-5">Asset</label>
+      <!-- Example: hostname.com -->
+      <input type="text" class="gf-form-input width-30" ng-model="ctrl.target.asset" ng-blur="ctrl.targetTextChanged()"
+             bs-typeahead="ctrl.suggestAsset"></input>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-5">Metric</label>
+      <!-- Example: disk.used -->
+      <input type="text" class="gf-form-input width-30" ng-model="ctrl.target.metric" ng-blur="ctrl.targetTextChanged()"
+             bs-typeahead="ctrl.suggestMetric"></input>
+    </div>
+    <div class="gf-form">
+      <gf-form-switch class="gf-form" label="Formula" label-class="width-5" checked="ctrl.target.isFormula"></gf-form-switch>
+      <input ng-show="ctrl.target.isFormula" type="text" class="gf-form-input" ng-model="ctrl.target.formula" ng-blur="ctrl.targetTextChanged()"></input>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-5">Alias</label>
+      <!-- Example: disk.used -->
+      <input type="text" class="gf-form-input" ng-model="ctrl.target.alias" ng-blur="ctrl.targetTextChanged()"></input>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-5">Tags</label>
+      <!-- gf-form-input has width 100% which makes the remove button wrong -->
+      <dev ng-repeat="(key, value) in ctrl.target.tags track by $index" class="gf-form-input" style="width: inherit">
+        {{key}}&nbsp;=&nbsp;{{value}}
+        <a ng-click="ctrl.removeTag(key)">
+          <i class="fa fa-remove"></i>
+        </a>
+      </dev>
+      <div ng-show="ctrl.addTagMode">
+        <!-- possibleTags is set at query_ctrl.js addTag()  -->
+        <select ng-model="ctrl.target.selectedTag"
+                class="width-8"
+                ng-options="pTag.value group by pTag.key for pTag in ctrl.target.possibleTags"
+                ng-change="ctrl.addTag()">
+        </select>
+        <a ng-click="ctrl.cancelAddTagMode()">
+          <i class="fa fa-remove"></i>
+        </a>
+        <a bs-tooltip="ctrl.target.errors.tags"
+           style="color: rgb(229, 189, 28)"
+           ng-show="ctrl.target.errors.tags">
+          <i class="fa fa-warning"></i>
+        </a>
+      </div>
+      <div class="gf-form-label" ng-hide="ctrl.addTagMode">
+        <a  ng-click="ctrl.addTag()">
+          <i class="fa fa-plus"></i>
+        </a>
+      </div>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-8">Aggregator</label>
+      <gf-form-dropdown model="ctrl.target.aggregator"
+                        get-options="ctrl.getAggregators()">
+      </gf-form-dropdown>
+    </div>
+    <div class="gf-form">
+      <gf-form-switch class="gf-form" label="Rate" label-class="width-4" checked="ctrl.target.shouldComputeRate"></gf-form-switch>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-11">Downsample Interval</label>
+      <input type="text" class="gf-form-input width-4" ng-model="ctrl.target.downsampleInterval" ></input>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-12">Downsample Aggregator</label>
+      <gf-form-dropdown model="ctrl.target.downsampleAggregator"
+                        get-options="ctrl.getAggregators()">
+      </gf-form-dropdown>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-8">Fill Policy</label>
+      <gf-form-dropdown model="ctrl.target.fillPolicy"
+                        get-options="ctrl.getFillPolicies()">
+      </gf-form-dropdown>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-8">Time Shift</label>
+      <input type="text" class="gf-form-input width-4" ng-model="ctrl.target.timeShift" ></input>
+    </div>
+
+
+  </div>
+</query-editor-row>

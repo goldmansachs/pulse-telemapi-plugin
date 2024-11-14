@@ -1,0 +1,39 @@
+{
+  "name": "pulse-telemapi-plugin-typescript",
+  "version": "1.0.0",
+  "description": "Telemetry API Grafana plugin",
+  "scripts": {
+    "build": "grunt",
+    "watch": "grunt watch",
+    "test": "mocha --require ts-node/register --reporter json specs/**/*.spec.ts > test-report.json"
+  },
+  "author": "Goldman Sachs",
+  "license": "Apache License",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "q": "^1.5.0",
+    "systemjs": "^0.19.47"
+  },
+  "devDependencies": {
+    "@tsconfig/node-lts-strictest-esm": "^18.12.1",
+    "@types/lodash": "^4.14.74",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.12.12",
+    "grafana-sdk-mocks-graph-panel": "1.0.2",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-typescript": "^0.8.0",
+    "load-grunt-tasks": "^3.5.2",
+    "mocha": "^10.4.0",
+    "plugin-typescript": "^7.1.0",
+    "sinon": "15.0.0",
+    "systemjs-plugin-css": "^0.1.35",
+    "ts-mockito": "2.6.1",
+    "ts-node": "^10.7.0",
+    "typescript": "^2.9.2"
+  }
+}
