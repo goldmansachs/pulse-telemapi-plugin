@@ -5,7 +5,7 @@
   "scripts": {
     "build": "grunt",
     "watch": "grunt watch",
-    "test": "mocha --require ts-node/register --reporter json specs/**/*.spec.ts > test-report.json"
+    "test": "mocha --require ts-node/register --reporter json specs/**/*.spec.ts"
   },
   "author": "Goldman Sachs",
   "license": "Apache License",
