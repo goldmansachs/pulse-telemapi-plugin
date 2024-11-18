@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from 'lodash';
 import Suggestion from './suggestion';
 
 export default class TimeseriesApiDatasource {
