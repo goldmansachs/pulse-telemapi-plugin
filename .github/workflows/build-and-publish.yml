@@ -23,9 +23,9 @@ jobs:
 
       - name: Prepare zip
         run: |
-        mkdir build
-        mv dist build/
-        zip -r build.zip build
+          mkdir build
+          mv dist build/
+          zip -r build.zip build
 
       # Publish the asset only if the branch is main or release.
       - name: Publish zip
