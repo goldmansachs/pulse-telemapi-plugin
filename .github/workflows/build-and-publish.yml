@@ -15,13 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # - name: Exit if the branch is not main
-      #   run: |
-      #     if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
-      #       echo "Branch is not main, exiting."
-      #       exit 0
-      #     fi
-      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
