@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Release version v.*.*.*'
+        description: 'Release version, eg: v1.0.0'
         required: true
 
 jobs:
@@ -15,6 +15,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Exit if the branch is not main
+        run: |
+          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
+            echo "Branch is not main, exiting."
+            exit 0
+          fi
+      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -43,14 +50,13 @@ jobs:
           draft: false
           prerelease: false
 
-      # Publish the asset only if the branch is main or release.
       - name: Upload asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./build.zip
           asset_name: build.zip
           asset_content_type: application/zip
