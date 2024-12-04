@@ -42,11 +42,6 @@ http://<base url>/esmtelemetryapi/api/v2/timeseries/domain/<domain>
 
 [Install the plugin](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-a-packaged-plugin) in Grafana and [allow unsigned plugin](https://grafana.com/docs/grafana/latest/administration/plugin-management/#allow-unsigned-plugins).
 
-## Contributions
-
-Contributions are encouraged! Please see [CONTRIBUTING](CONTRIBUTING.md) for more details.
-
-
 ## Note
 
 The simpleJson_logo.svg file is used as logo which is taken from [Simple JSON datasource](https://github.com/grafana/simple-json-datasource/blob/master/src/img/simpleJson_logo.svg) copyrighted under MIT License.
