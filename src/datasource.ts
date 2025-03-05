@@ -176,7 +176,7 @@ export default class TimeseriesApiDatasource {
 
   domainListQuery() {
     return this.doRequest({
-      url: this.instanceSettings.url + '/_internal/domains',
+      url: this.instanceSettings.url + '/_internal/tenants',
       method: 'GET'
     }).then(this.mapToTextValue);
   }
